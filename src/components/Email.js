@@ -3,8 +3,8 @@ import React from 'react';
 export default class Email extends React.Component {
 
     render () {
-        const { sender, subject, selected, handleSelect, id } = this.props;
-        return (<div className='emailContainer'>
+        const { sender, subject, selected, handleSelect, id, handleKeyDown,  handleKeyUp } = this.props;
+        return (<div className='emailContainer' tabIndex='0' onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
             <div className='sender'>
                 {sender}
             </div>
@@ -12,7 +12,7 @@ export default class Email extends React.Component {
                 {subject}
             </div>
             <div className='checkBox'>
-                <input type='checkbox' checked={selected} onClick={ () => handleSelect(id)}/>
+                <input type='checkbox'  checked={selected} onChange={ () => handleSelect(id)} />
             </div>
         </div>)
     }
